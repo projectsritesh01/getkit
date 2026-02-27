@@ -1,0 +1,188 @@
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  padding: 120px 0; /* Reduced from 160px to 120px to fix upper spacing */
+  background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+  overflow: hidden;
+}
+
+.heroWrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.heroLeft {
+  text-align: left;
+}
+
+.heroBadge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--primary);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.heroHighlight {
+  color: var(--primary);
+}
+
+.heroSubtext {
+  margin-top: 24px;
+  font-size: 20px;
+  max-width: 620px;
+}
+
+.heroButtons {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.heroRight {
+  display: flex;
+  justify-content: center;
+}
+
+.heroCardPreview {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.miniCard {
+  height: 90px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f1f1;
+  transition: 0.3s ease;
+}
+
+.miniCard:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.cardIcon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   SECTION SPACING FIX
+========================= */
+
+/* Remove default section margin and standardize padding */
+section {
+  margin: 0;
+  padding: 80px 0;
+}
+
+/* Reduce top padding for the first section under hero */
+section:first-of-type {
+  padding-top: 40px;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.homeHowItWorks {
+  background: #f8fafc;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+.stepNumber {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+  background: var(--primary);
+  padding: 120px 0;
+  text-align: center;
+  color: white;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.btnSecondary {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .heroTitle {
+    font-size: 48px;
+  }
+
+}

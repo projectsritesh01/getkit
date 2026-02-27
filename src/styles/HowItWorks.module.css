@@ -1,0 +1,154 @@
+/* HowItWorks.module.css */
+
+/* =========================
+   CONTAINER & PAGE TITLE
+========================= */
+
+.howContainer {
+  max-width: 1150px;
+  margin: 80px auto 60px; /* Reduced top margin to fix spacing near navbar */
+  padding: 0 20px;
+  font-family: "Inter", sans-serif;
+  color: var(--text-normal);
+  line-height: 1.6;
+}
+
+.pageTitle {
+  font-size: 48px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.centerText {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 18px;
+  color: var(--text-light);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  
+  color: var(--primary-dark);
+}
+
+.section p {
+  font-size: 16px;
+  color: var(--text-normal);
+
+}
+
+/* =========================
+   GRID CARDS
+========================= */
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  
+}
+
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1px solid #eee;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card strong {
+  display: block;
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+  background: var(--primary);
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  color: white;
+}
+
+.cta p {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.btnPrimary {
+  background: white;
+  color: var(--primary);
+}
+
+.btnPrimary:hover {
+  background: #f3f3f3;
+}
+
+.btnOutline {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btnOutline:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .pageTitle {
+    font-size: 38px;
+  }
+
+  .section h2 {
+    font-size: 28px;
+  }
+
+  .grid3 {
+    gap: 16px;
+  }
+
+  .cta {
+    padding: 60px 20px;
+  }
+}
