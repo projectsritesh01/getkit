@@ -1,4 +1,4 @@
-# The Structured Framework for Building Profitable Digital Products 
+**The Structured Framework for Building Profitable Digital Products** 
 
 Most digital products don’t fail because the idea is weak.
 

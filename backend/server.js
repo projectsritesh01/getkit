@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
+// import articlesRoute from "./routes/articles.js";
+
 
 dotenv.config();
 
@@ -19,5 +21,6 @@ mongoose.connect(process.env.MONGO_URI)
 
 /* Routes */
 app.use("/api/auth", authRoutes);
+// app.use("/api/articles", articlesRoute);
 
 app.listen(5000, () => console.log("Server running on port 5000"));
