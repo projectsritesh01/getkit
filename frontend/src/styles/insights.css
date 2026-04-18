@@ -1,7 +1,10 @@
 .insightsPage{
   padding-top:40px;
   padding-bottom:100px;
-  background:#fafafa;
+  background:
+    radial-gradient(circle at top right, #fff1e6 0%, transparent 34%),
+    radial-gradient(circle at bottom left, #fff6ed 0%, transparent 30%),
+    #fffaf5;
 }
 
 /* HERO */

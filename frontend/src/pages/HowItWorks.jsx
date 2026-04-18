@@ -2,6 +2,7 @@ import styles from "../styles/HowItWorks.module.css";
 
 export default function HowItWorks() {
   return (
+    <div className={styles.howPage}>
     <div className={styles.howContainer}>
 
       <h1 className={styles.pageTitle}>
@@ -80,6 +81,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
+    </div>
     </div>
   );
 }
