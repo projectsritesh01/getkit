@@ -1,3 +1,5 @@
+// Kits.jsx
+
 import { Link } from "react-router-dom";
 import {
   FiBriefcase,
@@ -10,6 +12,7 @@ import "../styles/kits.css";
 
 const categories = [
   {
+    slug: "business",
     title: "Business",
     icon: <FiBriefcase />,
     image:
@@ -23,6 +26,7 @@ const categories = [
     ]
   },
   {
+    slug: "creators",
     title: "Creators",
     icon: <FiCamera />,
     image:
@@ -36,6 +40,7 @@ const categories = [
     ]
   },
   {
+    slug: "career",
     title: "Career",
     icon: <FiTrendingUp />,
     image:
@@ -49,6 +54,7 @@ const categories = [
     ]
   },
   {
+    slug: "productivity",
     title: "Productivity",
     icon: <FiZap />,
     image:
@@ -96,7 +102,7 @@ export default function Kits() {
               ))}
             </ul>
 
-            <Link to="/custom" className="kitBtn">
+            <Link to={`/kits/${item.slug}`} className="kitBtn">
               View Solutions →
             </Link>
           </div>

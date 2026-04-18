@@ -1,6 +1,9 @@
 import styles from "../styles/Home.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
       {/* ================= HERO ================= */}
@@ -26,11 +29,17 @@ function Home() {
             </p>
 
             <div className={styles.heroButtons}>
-              <button className="btn btn-primary">
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/kits")}
+              >
                 Explore Free Kit
               </button>
 
-              <button className="btn btn-secondary">
+              <button
+                className="btn btn-secondary"
+                onClick={() => navigate("/how-it-works")}
+              >
                 See How It Works
               </button>
             </div>
@@ -126,12 +135,14 @@ function Home() {
             Stop consuming information. Start implementing structured systems.
           </p>
 
-          
-  <div className={styles.ctaButtons}>
-    <button className={`${styles.btn} ${styles.btnSecondary}`}>
-      Get Started Now
-    </button>
-  </div>
+          <div className={styles.ctaButtons}>
+            <button
+              className={`${styles.btn} ${styles.btnSecondary}`}
+              onClick={() => navigate("/kits")}
+            >
+              Get Started Now
+            </button>
+          </div>
 
         </div>
       </section>

@@ -2,6 +2,9 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/layout.css";
 
+import logoImg from "../assets/GetKit Logo.png";
+import nameImg from "../assets/GetKit Name.png";
+
 export default function MainLayout() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -9,6 +12,7 @@ export default function MainLayout() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -18,7 +22,8 @@ export default function MainLayout() {
       <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-container">
           <NavLink to="/" className="logo">
-            getkit
+            <img src={logoImg} alt="GetKit Logo" className="logo-icon" />
+            <img src={nameImg} alt="GetKit" className="logo-text" />
           </NavLink>
 
           <nav className="nav-links">

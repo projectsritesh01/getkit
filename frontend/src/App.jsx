@@ -8,7 +8,11 @@ import Signup from "./pages/Signup";
 import ArticlePage from "./pages/ArticlePage";
 import Insights from "./pages/Insights";
 import Kits from "./pages/Kits";
+import KitsDetails from "./pages/KitsDetails";
 import Community from "./pages/Community";
+import GalleryPage from "./pages/GalleryPage";
+
+
 
 function App() {
   return (
@@ -17,6 +21,8 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="kits" element={<Kits />} />
+          <Route path="/kits/:category" element={<KitsDetails />} />
+          <Route path="/kits/:category/:type" element={<GalleryPage />} />
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="insights" element={<Insights />} />
           <Route path="insights/:slug" element={<ArticlePage />} />
