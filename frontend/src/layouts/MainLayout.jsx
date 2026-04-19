@@ -31,7 +31,6 @@ export default function MainLayout() {
             <NavLink to="/kits">Kits</NavLink>
             <NavLink to="/insights">Insights</NavLink>
             <NavLink to="/community">Community</NavLink>
-            <NavLink to="/custom">Custom</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
           </nav>
 
