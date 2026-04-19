@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/layout.css";
 
-import logoImg from "../assets/GetKit (2).png";
+import logoImg from "../assets/GetKit2.png";
 // import nameImg from "../assets/GetKit Name.png";
 
 export default function MainLayout() {
