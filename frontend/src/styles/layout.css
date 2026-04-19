@@ -1,15 +1,20 @@
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(10px);
+  background: rgba(15, 15, 16, 0.82);
+  backdrop-filter: blur(12px);
   padding: 16px 0;
   transition: all 0.3s ease;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar.scrolled {
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 .nav-container {
@@ -21,7 +26,9 @@
   justify-content: space-between;
 }
 
-/* LOGO */
+/* =========================
+   LOGO
+========================= */
 
 .logo {
   display: flex;
@@ -41,13 +48,17 @@
   width: auto;
   object-fit: contain;
 }
+
+/* Better for dark background */
 .logo-icon,
 .logo-text {
-  mix-blend-mode: multiply;
-  filter: contrast(1.12);
+  mix-blend-mode: normal;
+  filter: brightness(1.08) contrast(1.08);
 }
 
-/* NAV LINKS */
+/* =========================
+   NAV LINKS
+========================= */
 
 .nav-links {
   display: flex;
@@ -56,9 +67,14 @@
 
 .nav-links a {
   text-decoration: none;
-  color: var(--text-normal);
+  color: #d1d5db;
   font-weight: 500;
   position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
 }
 
 .nav-links a.active {
@@ -72,22 +88,28 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: var(--primary);
-  transition: 0.3s;
+  background: linear-gradient(90deg, #ff8c2a, #ff6a00);
+  border-radius: 999px;
+  transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
 
-/* ACTIONS */
+/* =========================
+   ACTIONS
+========================= */
 
 .nav-actions {
   display: flex;
   gap: 14px;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 1024px) {
   .nav-links {

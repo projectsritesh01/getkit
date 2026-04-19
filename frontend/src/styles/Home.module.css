@@ -4,9 +4,13 @@
 
 .hero {
   position: relative;
-  padding: 120px 0; /* Reduced from 160px to 120px to fix upper spacing */
-  background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+  padding: 120px 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 140, 42, 0.14) 0%, transparent 38%),
+    radial-gradient(circle at bottom left, rgba(255, 106, 0, 0.10) 0%, transparent 34%),
+    linear-gradient(to bottom right, #0f0f10, #1a1a1d);
   overflow: hidden;
+  color: #ffffff;
 }
 
 .heroWrapper {
@@ -23,8 +27,9 @@
 .heroBadge {
   display: inline-block;
   padding: 6px 14px;
-  background: rgba(79, 70, 229, 0.1);
-  color: var(--primary);
+  background: rgba(255, 140, 42, 0.12);
+  color: #ff8c2a;
+  border: 1px solid rgba(255, 140, 42, 0.22);
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
@@ -36,6 +41,7 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -1px;
+  color: #ffffff;
 }
 
 .heroHighlight {
@@ -46,6 +52,7 @@
   margin-top: 24px;
   font-size: 20px;
   max-width: 620px;
+  color: #c7c7cc;
 }
 
 .heroButtons {
@@ -72,15 +79,17 @@
 
 .miniCard {
   height: 90px;
-  background: white;
+  background: rgba(28, 28, 31, 0.92);
+  color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
-  border: 1px solid #f1f1f1;
+  border: 1px solid #2b2b31;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
   transition: 0.3s ease;
 }
 
 .miniCard:hover {
   transform: translateY(-5px);
+  border-color: rgba(255, 140, 42, 0.35);
 }
 
 /* =========================
@@ -96,19 +105,18 @@
 .cardIcon {
   font-size: 28px;
   margin-bottom: 16px;
+  color: #ff8c2a;
 }
 
 /* =========================
    SECTION SPACING FIX
 ========================= */
 
-/* Remove default section margin and standardize padding */
 section {
   margin: 0;
   padding: 80px 0;
 }
 
-/* Reduce top padding for the first section under hero */
 section:first-of-type {
   padding-top: 40px;
 }
@@ -118,7 +126,10 @@ section:first-of-type {
 ========================= */
 
 .homeHowItWorks {
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at top right, rgba(255, 140, 42, 0.08) 0%, transparent 36%),
+    #141416;
+  color: #ffffff;
 }
 
 .stepsGrid {
@@ -130,7 +141,7 @@ section:first-of-type {
 .stepNumber {
   font-size: 40px;
   font-weight: 800;
-  color: var(--primary);
+  color: #ff8c2a;
   margin-bottom: 16px;
 }
 
@@ -138,12 +149,10 @@ section:first-of-type {
    CTA
 ========================= */
 
-/* =========================
-   CTA
-========================= */
-
 .cta {
-  background: var(--primary);
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.06), transparent 40%),
+    linear-gradient(135deg, #ff8c2a, #ff6a00);
   padding: 120px 0;
   text-align: center;
   color: white;
@@ -166,13 +175,13 @@ section:first-of-type {
 }
 
 .btnSecondary {
-  border: 2px solid white;
+  border: 2px solid rgba(255,255,255,0.8);
   color: white;
   background: transparent;
 }
 
 .btnSecondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* =========================
@@ -180,9 +189,7 @@ section:first-of-type {
 ========================= */
 
 @media (max-width: 1024px) {
-
   .heroTitle {
     font-size: 48px;
   }
-
 }

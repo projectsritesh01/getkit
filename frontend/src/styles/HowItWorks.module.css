@@ -1,26 +1,31 @@
+/* =========================
+   PAGE BACKGROUND
+========================= */
+
 .howPage {
   background:
-    radial-gradient(circle at top right, #fff1e6 0%, transparent 34%),
-    radial-gradient(circle at bottom left, #fff6ed 0%, transparent 30%),
-    #fffaf5;
+    radial-gradient(circle at top right, rgba(255, 140, 42, 0.14) 0%, transparent 36%),
+    radial-gradient(circle at bottom left, rgba(255, 106, 0, 0.10) 0%, transparent 32%),
+    #0f0f10;
 }
-
 
 .howContainer {
   max-width: 1180px;
   margin: 10px auto 70px;
   padding: 0 20px;
   font-family: "Inter", sans-serif;
-  color: var(--text-normal);
+  color: #d1d5db;
 }
 
-/* Heading */
+/* =========================
+   HEADING
+========================= */
 
 .pageTitle {
   font-size: 56px;
   font-weight: 800;
   text-align: center;
-  color: #171717;
+  color: #ffffff;
   margin-bottom: 18px;
   line-height: 1.08;
   padding-top: 36px;
@@ -32,41 +37,46 @@
   margin: 0 auto 64px;
   font-size: 18px;
   line-height: 1.8;
-  color: #666;
+  color: #a1a1aa;
 }
 
-/* Sections */
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
-  background: rgba(255,255,255,0.92);
-  border: 1px solid #ffe7cf;
+  background: rgba(28, 28, 31, 0.92);
+  border: 1px solid #2b2b31;
   border-radius: 24px;
   padding: 38px;
   margin-bottom: 28px;
-  box-shadow: 0 12px 34px rgba(245,158,11,0.05);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
   transition: all 0.28s ease;
 }
 
 .section:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(245,158,11,0.10);
+  border-color: rgba(255, 140, 42, 0.28);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.48);
 }
 
 .section h2 {
   font-size: 32px;
   font-weight: 750;
-  color: #1e1e1e;
+  color: #ffffff;
   margin-bottom: 18px;
 }
 
 .section p {
   font-size: 16px;
   line-height: 1.85;
-  color: #555;
+  color: #c7c7cc;
   margin-bottom: 14px;
 }
 
-/* Cards */
+/* =========================
+   CARDS
+========================= */
 
 .grid3 {
   display: grid;
@@ -76,8 +86,8 @@
 }
 
 .card {
-  background: #fffdf9;
-  border: 1px solid #ffe8d0;
+  background: #171719;
+  border: 1px solid #2b2b31;
   border-radius: 22px;
   padding: 26px;
   transition: all 0.28s ease;
@@ -85,24 +95,27 @@
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(245,158,11,0.10);
+  border-color: rgba(255, 140, 42, 0.32);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
 }
 
 .card strong {
   display: block;
   font-size: 20px;
-  color: #171717;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 .card p {
   font-size: 15px;
   line-height: 1.75;
-  color: #666;
+  color: #a1a1aa;
   margin: 0;
 }
 
-/* CTA IMPROVED */
+/* =========================
+   CTA
+========================= */
 
 .cta {
   margin-top: 40px;
@@ -111,11 +124,12 @@
   text-align: center;
 
   background:
-    linear-gradient(135deg, #f59e0b 0%, #fb923c 45%, #fdba74 100%);
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 42%),
+    linear-gradient(135deg, #ff8c2a 0%, #ff6a00 52%, #ff9d42 100%);
 
   box-shadow:
-    0 22px 55px rgba(245,158,11,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.25);
+    0 22px 55px rgba(255, 106, 0, 0.22),
+    inset 0 1px 0 rgba(255,255,255,0.15);
 
   color: white;
   position: relative;
@@ -127,7 +141,7 @@
   position: absolute;
   width: 260px;
   height: 260px;
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.08);
   border-radius: 50%;
   top: -100px;
   right: -70px;
@@ -138,7 +152,7 @@
   position: absolute;
   width: 220px;
   height: 220px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
   border-radius: 50%;
   bottom: -90px;
   left: -60px;
@@ -163,7 +177,9 @@
   z-index: 2;
 }
 
-/* Buttons */
+/* =========================
+   BUTTONS
+========================= */
 
 .ctaButtons a {
   text-decoration: none;
@@ -174,8 +190,8 @@
 }
 
 .ctaButtons a:first-child {
-  background: white;
-  color: #ea580c;
+  background: #ffffff;
+  color: #ff6a00;
 }
 
 .ctaButtons a:first-child:hover {
@@ -185,14 +201,16 @@
 .ctaButtons a:last-child {
   background: rgba(255,255,255,0.12);
   color: white;
-  border: 1px solid rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.28);
 }
 
 .ctaButtons a:last-child:hover {
   background: rgba(255,255,255,0.18);
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 1024px) {
   .pageTitle {
