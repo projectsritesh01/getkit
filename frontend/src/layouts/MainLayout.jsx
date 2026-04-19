@@ -32,6 +32,8 @@ export default function MainLayout() {
             <NavLink to="/insights">Insights</NavLink>
             <NavLink to="/community">Community</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
+            <NavLink to="/contact">Contact Us</NavLink>
+
           </nav>
 
           <div className="nav-actions">
