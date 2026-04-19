@@ -1,4 +1,6 @@
-import { useParams } from "react-router-dom";
+// GalleryPage.jsx
+
+import { useParams, Link } from "react-router-dom";
 import "../styles/kitsDetails.css";
 
 import img1 from "../assets/MT 1.jpeg";
@@ -17,7 +19,12 @@ export default function GalleryPage() {
   return (
     <div className="kitDetailsPage">
       <section className="kitDetailsHero container">
-        <h1>{type === "products" ? "Products Gallery" : "Templates Gallery"}</h1>
+        <h1>
+          {type === "products"
+            ? "Products Gallery"
+            : "Templates Gallery"}
+        </h1>
+
         <p>Choose your preferred design</p>
       </section>
 
@@ -28,8 +35,13 @@ export default function GalleryPage() {
               <img src={img} alt="Gallery Item" />
 
               <div className="galleryButtons">
-                <button className="buyBtn">Buy</button>
-                <button className="customBtn">Get Customized</button>
+                <button className="buyBtn">
+                  Buy
+                </button>
+
+                <Link to="/custom" className="customBtn">
+                  Get Customized
+                </Link>
               </div>
             </div>
           ))}

@@ -10,7 +10,10 @@ import Insights from "./pages/Insights";
 import Kits from "./pages/Kits";
 import KitsDetails from "./pages/KitsDetails";
 import Community from "./pages/Community";
+import Custom from "./pages/Custom";
+import CustomRequest from "./pages/CustomRequest";
 import GalleryPage from "./pages/GalleryPage";
+import Contact from "./pages/Contact";
 
 
 
@@ -27,9 +30,13 @@ function App() {
           <Route path="insights" element={<Insights />} />
           <Route path="insights/:slug" element={<ArticlePage />} />
           <Route path="community" element={<Community />} />
+          <Route path="/custom" element={<Custom />} />
+          <Route path="/custom/request" element={<CustomRequest />} />
           <Route path="faq" element={<FAQ />} />
+          <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

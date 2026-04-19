@@ -1,0 +1,250 @@
+/* custom.css */
+
+.customPage {
+  min-height: 100vh;
+  padding-bottom: 90px;
+  background:
+    radial-gradient(circle at top right, rgba(255,140,0,0.12), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,140,0,0.08), transparent 26%),
+    linear-gradient(180deg, #050505 0%, #111111 100%);
+}
+
+/* HERO */
+
+.customHero {
+  text-align: center;
+  max-width: 920px;
+  margin: auto;
+  padding: 95px 20px 55px;
+}
+
+.customTag {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255,140,0,0.08);
+  border: 1px solid rgba(255,140,0,0.35);
+  color: #ff9a1f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.customHero h1 {
+  font-size: 62px;
+  line-height: 1.03;
+  color: white;
+  margin-bottom: 18px;
+  font-weight: 800;
+}
+
+.customHero h1 span {
+  color: #ff9a1f;
+}
+
+.customHero p {
+  color: #b8b8b8;
+  font-size: 18px;
+  line-height: 1.9;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* JOURNEY */
+
+.customJourney {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 20px;
+}
+
+.journeyLine {
+  width: 4px;
+  height: 100%;
+  margin: auto;
+  border-radius: 99px;
+  background: linear-gradient(#f59e0b, #fb923c);
+}
+
+.journeyCard {
+  background: rgba(18,18,18,0.94);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 26px;
+  padding: 34px;
+  position: relative;
+}
+
+.journeyNumber {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#f59e0b,#fb923c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.journeyMini {
+  color: #ff9a1f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.journeyCard h2 {
+  color: white;
+  font-size: 34px;
+  margin: 12px 0;
+}
+
+.journeyCard p {
+  color: #b8b8b8;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.journeyCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+}
+
+.journeyCard li {
+  padding: 10px 0;
+  color: #ededed;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* BUTTONS */
+
+.journeyBtn {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg,#f59e0b,#fb923c);
+  color: white;
+}
+
+.outlineBtn {
+  border: 1px solid #ff9a1f;
+  color: #ff9a1f;
+  background: transparent;
+}
+
+/* REQUEST PAGE */
+
+.requestSection {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  padding: 20px;
+}
+
+.requestInfo,
+.customForm {
+  background: rgba(18,18,18,0.94);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 26px;
+  padding: 32px;
+}
+
+.requestInfo h2 {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 22px;
+}
+
+.infoList {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 14px;
+}
+
+.infoBox {
+  background: rgba(255,140,0,0.08);
+  border: 1px solid rgba(255,140,0,0.22);
+  color: #ffb04a;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.customForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.customForm input,
+.customForm select,
+.customForm textarea {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 15px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 980px) {
+  .customJourney,
+  .requestSection {
+    grid-template-columns: 1fr;
+  }
+
+  .journeyLine {
+    display: none;
+  }
+
+  .customHero h1 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 640px) {
+  .customHero {
+    padding: 72px 18px 42px;
+  }
+
+  .customHero h1 {
+    font-size: 34px;
+  }
+
+  .customHero p {
+    font-size: 16px;
+  }
+
+  .journeyCard,
+  .requestInfo,
+  .customForm {
+    padding: 24px;
+  }
+
+  .infoList {
+    grid-template-columns: 1fr;
+  }
+
+  .journeyCard h2 {
+    font-size: 28px;
+  }
+}

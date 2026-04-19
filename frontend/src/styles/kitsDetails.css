@@ -235,7 +235,67 @@
   color: #ff8c2a;
   border: 1px solid #3a2a1d;
 }
+.galleryButtons {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+}
 
+.buyBtn,
+.customBtn {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* BUY BUTTON */
+
+.buyBtn {
+  border: none;
+  background: linear-gradient(135deg, #ff8c2a, #ff6a00);
+  color: white;
+}
+
+.buyBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(255, 140, 42, 0.22);
+}
+
+/* GET CUSTOMIZED LINK BUTTON */
+
+.customBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #1f1f23;
+  color: #ff8c2a;
+  border: 1px solid #3a2a1d;
+}
+
+.customBtn:hover {
+  transform: translateY(-2px);
+  border-color: #ff8c2a;
+  background: rgba(255, 140, 42, 0.08);
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .galleryButtons {
+    flex-direction: column;
+  }
+
+  .buyBtn,
+  .customBtn {
+    width: 100%;
+  }
+}
 /* MOBILE */
 
 @media (max-width: 640px) {
