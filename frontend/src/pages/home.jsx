@@ -46,12 +46,28 @@ function Home() {
           </div>
 
           <div className={styles.heroRight}>
-            <div className={styles.heroCardPreview}>
-              <div className={styles.miniCard} />
-              <div className={styles.miniCard} />
-              <div className={styles.miniCard} />
-            </div>
-          </div>
+  <div className={styles.heroCardPreview}>
+
+    <div className={styles.miniCard}>
+      <span>Active Kits</span>
+      <h3>12+</h3>
+      <p>Business • Career • Creator</p>
+    </div>
+
+    <div className={styles.miniCard}>
+      <span>Availability</span>
+      <h3>24/7</h3>
+      <p>Access</p>
+    </div>
+
+    <div className={styles.miniCard}>
+      <span>Execution Rate</span>
+      <h3>42%</h3>
+      <p>Faster Productivity</p>
+    </div>
+
+  </div>
+</div>
 
         </div>
       </section>

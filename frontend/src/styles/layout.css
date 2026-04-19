@@ -7,7 +7,7 @@
   top: 0;
   background: rgba(15, 15, 16, 0.82);
   backdrop-filter: blur(12px);
-  padding: 16px 0;
+  padding: 10px 0; /* reduced height */
   transition: all 0.3s ease;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 /* =========================
@@ -38,18 +39,17 @@
 }
 
 .logo-icon {
-  width: 68px;
-  height: 68px;
+  width: 92px;
+  height: 92px;
   object-fit: contain;
 }
 
 .logo-text {
-  height: 54px;
+  height: 64px;
   width: auto;
   object-fit: contain;
 }
 
-/* Better for dark background */
 .logo-icon,
 .logo-text {
   mix-blend-mode: normal;
@@ -63,6 +63,7 @@
 .nav-links {
   display: flex;
   gap: 26px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -105,42 +106,61 @@
 .nav-actions {
   display: flex;
   gap: 14px;
+  align-items: center;
 }
 
 /* =========================
-   RESPONSIVE
+   MENU ICON
 ========================= */
 
-@media (max-width: 1024px) {
-  .nav-links {
-    gap: 18px;
-  }
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
 
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 768px) {
   .logo-icon {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
 
   .logo-text {
-    height: 46px;
+    height: 48px;
   }
-}
 
-@media (max-width: 768px) {
-  .nav-links {
+  .nav-links,
+  .nav-actions {
     display: none;
   }
 
-  .logo {
-    gap: 12px;
+  .menu-toggle {
+    display: block;
   }
 
-  .logo-icon {
-    width: 52px;
-    height: 52px;
+  /* when menu opened add class active */
+  .navbar.active .nav-container {
+    flex-wrap: wrap;
   }
 
-  .logo-text {
-    height: 38px;
+  .navbar.active .nav-links,
+  .navbar.active .nav-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .navbar.active .nav-actions {
+    padding-bottom: 10px;
   }
 }

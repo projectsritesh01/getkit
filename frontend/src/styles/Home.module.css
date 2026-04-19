@@ -71,18 +71,17 @@
 }
 
 .heroCardPreview {
-  width: 320px;
+  width: 340px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .miniCard {
-  height: 90px;
   background: rgba(28, 28, 31, 0.92);
-  color: #ffffff;
-  border-radius: 16px;
   border: 1px solid #2b2b31;
+  border-radius: 18px;
+  padding: 22px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
   transition: 0.3s ease;
 }
@@ -90,6 +89,31 @@
 .miniCard:hover {
   transform: translateY(-5px);
   border-color: rgba(255, 140, 42, 0.35);
+}
+
+.miniCard span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #9a9aa0;
+  margin-bottom: 12px;
+}
+
+.miniCard h3 {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+  color: #ff8c2a;
+  margin: 0 0 10px;
+}
+
+.miniCard p {
+  font-size: 15px;
+  color: #c7c7cc;
+  margin: 0;
+  line-height: 1.6;
 }
 
 /* =========================
@@ -191,5 +215,37 @@ section:first-of-type {
 @media (max-width: 1024px) {
   .heroTitle {
     font-size: 48px;
+  }
+
+  .heroWrapper {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .heroCardPreview {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 90px 0;
+  }
+
+  .heroTitle {
+    font-size: 38px;
+  }
+
+  .heroSubtext {
+    font-size: 17px;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+  }
+
+  .miniCard h3 {
+    font-size: 36px;
   }
 }
