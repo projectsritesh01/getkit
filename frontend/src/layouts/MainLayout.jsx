@@ -33,35 +33,18 @@ export default function MainLayout() {
             {/* <img src={nameImg} alt="GetKit" className="logo-text" /> */}
           </NavLink>
 
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+
           <nav className="nav-links">
             <NavLink to="/how-it-works" onClick={closeMenu}>
               How It Works
             </NavLink>
-
-            <NavLink to="/kits" onClick={closeMenu}>
-              Kits
-            </NavLink>
-
-            <NavLink to="/insights" onClick={closeMenu}>
-              Insights
-            </NavLink>
-
-            <NavLink to="/community" onClick={closeMenu}>
-              Community
-            </NavLink>
-
-            <NavLink to="/custom" onClick={closeMenu}>
-              Custom
-            </NavLink>
-
-            <NavLink to="/faq" onClick={closeMenu}>
-              FAQ
-            </NavLink>
-
-            <NavLink to="/contact" onClick={closeMenu}>
-              Contact Us
-            </NavLink>
-          </nav>
 
             <NavLink to="/kits" onClick={closeMenu}>
               Kits
