@@ -7,6 +7,7 @@ import logoImg from "../assets/GetKit2.png";
 
 export default function MainLayout() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,32 +18,73 @@ export default function MainLayout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
-      <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
+      <header
+        className={`navbar ${scrolled ? "scrolled" : ""} ${
+          menuOpen ? "active" : ""
+        }`}
+      >
         <div className="nav-container">
-          <NavLink to="/" className="logo">
+          <NavLink to="/" className="logo" onClick={closeMenu}>
             <img src={logoImg} alt="GetKit Logo" className="logo-icon" />
             {/* <img src={nameImg} alt="GetKit" className="logo-text" /> */}
           </NavLink>
 
-          <nav className="nav-links">
-            <NavLink to="/how-it-works">How It Works</NavLink>
-            <NavLink to="/kits">Kits</NavLink>
-            <NavLink to="/insights">Insights</NavLink>
-            <NavLink to="/community">Community</NavLink>
-            <NavLink to="/custom">Custom</NavLink>
-            <NavLink to="/faq">FAQ</NavLink>
-            <NavLink to="/contact">Contact Us</NavLink>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
 
+          <nav className="nav-links">
+            <NavLink to="/how-it-works" onClick={closeMenu}>
+              How It Works
+            </NavLink>
+
+            <NavLink to="/kits" onClick={closeMenu}>
+              Kits
+            </NavLink>
+
+            <NavLink to="/insights" onClick={closeMenu}>
+              Insights
+            </NavLink>
+
+            <NavLink to="/community" onClick={closeMenu}>
+              Community
+            </NavLink>
+
+            <NavLink to="/custom" onClick={closeMenu}>
+              Custom
+            </NavLink>
+
+            <NavLink to="/faq" onClick={closeMenu}>
+              FAQ
+            </NavLink>
+
+            <NavLink to="/contact" onClick={closeMenu}>
+              Contact Us
+            </NavLink>
           </nav>
 
           <div className="nav-actions">
-            <NavLink to="/login" className="btn btn-secondary">
+            <NavLink
+              to="/login"
+              className="btn btn-secondary"
+              onClick={closeMenu}
+            >
               Login
             </NavLink>
 
-            <NavLink to="/signup" className="btn btn-primary">
+            <NavLink
+              to="/signup"
+              className="btn btn-primary"
+              onClick={closeMenu}
+            >
               Sign up
             </NavLink>
           </div>
