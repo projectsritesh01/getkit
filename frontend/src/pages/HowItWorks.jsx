@@ -1,6 +1,8 @@
 import styles from "../styles/HowItWorks.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function HowItWorks() {
+  const navigate = useNavigate();
   return (
     <div className={styles.howPage}>
     <div className={styles.howContainer}>
