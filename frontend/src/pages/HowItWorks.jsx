@@ -71,13 +71,13 @@ export default function HowItWorks() {
         </p>
 
         <div className={styles.ctaButtons}>
-          <a href="/kits" className="btn btn-primary">
+          <button className="btn btn-primary" onClick={() => navigate("/kits")}>
             Explore Kits
-          </a>
+          </button>
 
-          <a href="/free" className="btn btn-outline">
+          <button className="btn btn-outline" onClick={() => navigate("/custom")}>
             Start With Free Resources
-          </a>
+          </button>
         </div>
       </section>
 
