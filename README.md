@@ -109,7 +109,7 @@ npm start
 
 ## Kits Page
 
-![Kits Page](./screenshots/kits.png)
+![Kits Page](./screenshots/kit.png)
 
 ---
 
