@@ -87,3 +87,35 @@ PORT=5000
 npm start
 ```
 
+# 📸 Screenshots
+
+## Home Page
+
+![Home Page](./screenshots/home.png)
+
+---
+
+## Login Page
+
+![Login Page](./screenshots/login.png)
+
+---
+
+## Signup Page
+
+![Signup](./screenshots/signup.png)
+
+---
+
+## Kits Page
+
+![Kits Page](./screenshots/kit.png)
+
+---
+
+## Custom Page
+
+![Custom Page](./screenshots/custom.png)
+
+---
+
