@@ -12,6 +12,20 @@ import "../styles/kits.css";
 
 const categories = [
   {
+    slug: "productivity",
+    title: "Productivity",
+    icon: <FiZap />,
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
+    desc: "Execution systems to help you focus, organize and scale output.",
+    items: [
+      "Deep Work Planner",
+      "Weekly Planning Kit",
+      "Second Brain Setup",
+      "Goal Execution System"
+    ]
+  },
+  {
     slug: "business",
     title: "Business",
     icon: <FiBriefcase />,
@@ -51,20 +65,6 @@ const categories = [
       "Interview Master Pack",
       "LinkedIn Authority Bundle",
       "Job Switch System"
-    ]
-  },
-  {
-    slug: "productivity",
-    title: "Productivity",
-    icon: <FiZap />,
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
-    desc: "Execution systems to help you focus, organize and scale output.",
-    items: [
-      "Deep Work Planner",
-      "Weekly Planning Kit",
-      "Second Brain Setup",
-      "Goal Execution System"
     ]
   }
 ];
