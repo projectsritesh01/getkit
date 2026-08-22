@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 import authRoutes from "./routes/auth.js";
 import customRequestRoutes from "./routes/customRequests.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 dotenv.config();
 
@@ -40,17 +41,23 @@ app.get("/", (req, res) => {
   res.send("Backend Running");
 });
 
-app.get("/api/test", (req, res) => {
-  res.json({
-    message: "API is working"
-  });
-});
-
 /* Routes */
 
 app.use("/api/auth", authRoutes);
 
 app.use("/api/custom-requests", customRequestRoutes);
+
+/* 404 Handler */
+
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Route not found"
+  });
+});
+
+/* Centralized Error Handler */
+
+app.use(errorHandler);
 
 /* Port */
 

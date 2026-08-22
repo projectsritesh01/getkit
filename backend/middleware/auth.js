@@ -1,12 +1,13 @@
 import jwt from "jsonwebtoken";
+import AppError from "../utils/AppError.js";
 
 export const protect = (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({
-      message: "Not authorized"
-    });
+    return next(
+      new AppError("Not authorized", 401)
+    );
   }
 
   try {
@@ -20,8 +21,6 @@ export const protect = (req, res, next) => {
     next();
 
   } catch (error) {
-    return res.status(401).json({
-      message: "Invalid or expired token"
-    });
+    next(error);
   }
 };

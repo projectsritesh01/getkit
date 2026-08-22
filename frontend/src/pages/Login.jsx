@@ -11,12 +11,14 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
     setError("");
+    setSuccess("");
 
     try {
       await authService.login({
@@ -24,10 +26,12 @@ export default function Login() {
         password
       });
 
-      alert("Login successful 🚀");
+      setSuccess("Login successful! Redirecting...");
 
-      // Go to home page after successful login
-      navigate("/");
+      // Small delay so the user can see the success message
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
 
     } catch (err) {
       console.error("Login error:", err);
@@ -36,7 +40,6 @@ export default function Login() {
         err.response?.data?.message ||
         "Login failed. Please try again."
       );
-
     } finally {
       setLoading(false);
     }
@@ -55,6 +58,12 @@ export default function Login() {
         {error && (
           <p className="auth-error">
             {error}
+          </p>
+        )}
+
+        {success && (
+          <p className="auth-success">
+            {success}
           </p>
         )}
 

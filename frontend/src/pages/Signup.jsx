@@ -12,12 +12,14 @@ export default function Signup() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
     setError("");
+    setSuccess("");
 
     try {
       await authService.signup({
@@ -26,10 +28,11 @@ export default function Signup() {
         password
       });
 
-      alert("Signup successful 🎉");
+      setSuccess("Account created successfully! Redirecting...");
 
-      // Go to home page after successful signup
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
 
     } catch (err) {
       console.error("Signup error:", err);
@@ -38,7 +41,6 @@ export default function Signup() {
         err.response?.data?.message ||
         "Signup failed. Please try again."
       );
-
     } finally {
       setLoading(false);
     }
@@ -57,6 +59,12 @@ export default function Signup() {
         {error && (
           <p className="auth-error">
             {error}
+          </p>
+        )}
+
+        {success && (
+          <p className="auth-success">
+            {success}
           </p>
         )}
 

@@ -3,11 +3,13 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { protect } from "../middleware/auth.js";
+import AppError from "../utils/AppError.js";
 
 const router = express.Router();
 
-/* Create JWT and store it in HTTP-only cookie */
-
+/*
+  Create JWT and store it in an HTTP-only cookie
+*/
 const createToken = (userId, res) => {
   const token = jwt.sign(
     { id: userId },
@@ -19,44 +21,114 @@ const createToken = (userId, res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
+
     secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+
+    sameSite:
+      process.env.NODE_ENV === "production"
+        ? "none"
+        : "lax",
+
     maxAge: 7 * 24 * 60 * 60 * 1000
   });
 };
 
-/* SIGNUP */
 
-router.post("/signup", async (req, res) => {
+/* =========================
+   SIGNUP
+========================= */
+
+router.post("/signup", async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
+    /* Required fields */
+
     if (!name || !email || !password) {
-      return res.status(400).json({
-        message: "All fields are required"
-      });
+      throw new AppError(
+        "Name, email and password are required",
+        400
+      );
     }
 
-    const userExists = await User.findOne({ email });
+    /* Name validation */
+
+    const trimmedName = name.trim();
+
+    if (trimmedName.length < 2) {
+      throw new AppError(
+        "Name must be at least 2 characters long",
+        400
+      );
+    }
+
+    if (trimmedName.length > 50) {
+      throw new AppError(
+        "Name cannot exceed 50 characters",
+        400
+      );
+    }
+
+    /* Email validation */
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(normalizedEmail)) {
+      throw new AppError(
+        "Please provide a valid email address",
+        400
+      );
+    }
+
+    /* Password validation */
+
+    if (password.length < 8) {
+      throw new AppError(
+        "Password must be at least 8 characters long",
+        400
+      );
+    }
+
+    /* Check if user already exists */
+
+    const userExists = await User.findOne({
+      email: normalizedEmail
+    });
 
     if (userExists) {
-      return res.status(400).json({
-        message: "User already exists"
-      });
+      throw new AppError(
+        "User already exists",
+        400
+      );
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    /* Hash password */
+
+    const hashedPassword = await bcrypt.hash(
+      password,
+      10
+    );
+
+    /* Create user */
 
     const user = await User.create({
-      name,
-      email,
+      name: trimmedName,
+      email: normalizedEmail,
       password: hashedPassword
     });
 
+    /* Create authentication cookie */
+
     createToken(user._id, res);
+
+    /* Response */
 
     res.status(201).json({
       message: "Account created successfully",
+
       user: {
         id: user._id,
         name: user.name,
@@ -65,34 +137,48 @@ router.post("/signup", async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Signup error:", error);
-
-    res.status(500).json({
-      message: "Server Error"
-    });
+    next(error);
   }
 });
 
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
+    /* Required fields */
+
     if (!email || !password) {
-      return res.status(400).json({
-        message: "Email and password are required"
-      });
+      throw new AppError(
+        "Email and password are required",
+        400
+      );
     }
 
-    const user = await User.findOne({ email });
+    /* Normalize email */
+
+    const normalizedEmail = email
+      .trim()
+      .toLowerCase();
+
+    /* Find user */
+
+    const user = await User.findOne({
+      email: normalizedEmail
+    });
 
     if (!user) {
-      return res.status(400).json({
-        message: "Invalid credentials"
-      });
+      throw new AppError(
+        "Invalid credentials",
+        401
+      );
     }
+
+    /* Compare password */
 
     const isMatch = await bcrypt.compare(
       password,
@@ -100,15 +186,21 @@ router.post("/login", async (req, res) => {
     );
 
     if (!isMatch) {
-      return res.status(400).json({
-        message: "Invalid credentials"
-      });
+      throw new AppError(
+        "Invalid credentials",
+        401
+      );
     }
+
+    /* Create authentication cookie */
 
     createToken(user._id, res);
 
+    /* Response */
+
     res.status(200).json({
       message: "Login successful",
+
       user: {
         id: user._id,
         name: user.name,
@@ -117,55 +209,67 @@ router.post("/login", async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Login error:", error);
-
-    res.status(500).json({
-      message: "Server Error"
-    });
+    next(error);
   }
 });
 
 
-/* LOGOUT */
+/* =========================
+   LOGOUT
+========================= */
 
-router.post("/logout", (req, res) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
-  });
-
-  res.status(200).json({
-    message: "Logged out successfully"
-  });
-});
-
-/* GET CURRENT USER */
-
-router.get("/me", protect, async (req, res) => {
+router.post("/logout", (req, res, next) => {
   try {
-    const user = await User.findById(req.user).select(
-      "-password"
-    );
+    res.clearCookie("token", {
+      httpOnly: true,
 
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found"
-      });
-    }
+      secure: process.env.NODE_ENV === "production",
+
+      sameSite:
+        process.env.NODE_ENV === "production"
+          ? "none"
+          : "lax"
+    });
 
     res.status(200).json({
-      user
+      message: "Logged out successfully"
     });
 
   } catch (error) {
-    console.error("Get user error:", error);
-
-    res.status(500).json({
-      message: "Server Error"
-    });
+    next(error);
   }
 });
+
+
+/* =========================
+   GET CURRENT USER
+========================= */
+
+router.get(
+  "/me",
+  protect,
+  async (req, res, next) => {
+    try {
+      const user = await User
+        .findById(req.user)
+        .select("-password");
+
+      if (!user) {
+        throw new AppError(
+          "User not found",
+          404
+        );
+      }
+
+      res.status(200).json({
+        user
+      });
+
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 
 export default router;
