@@ -14,21 +14,29 @@ import img5 from "../assets/MT 5.jpeg";
 import img6 from "../assets/MT 6.jpeg";
 import img7 from "../assets/MT 7.jpeg";
 
+import categories from "../data/categories.jsx";
 
 const gallery = [img1, img2, img3, img4, img5, img6, img7];
 
-const data = {
-  productivity: {
-    title: "Productivity Kits",
-    desc: "Focus systems and planning assets for better execution."
-  }
-};
+
 
 export default function KitsDetails() {
   const { category } = useParams();
   const [activeTab, setActiveTab] = useState("products");
 
-  const item = data[category];
+  const item = categories.find((item) => item.slug === category);
+
+  if (!item) {
+  return (
+    <div className="kitDetailsPage">
+      <section className="container">
+        <h1>Category Not Found</h1>
+        <p>The category you're looking for doesn't exist.</p>
+        <Link to="/kits">Back to Kits</Link>
+      </section>
+    </div>
+  );
+}
 
   return (
     <div className="kitDetailsPage">

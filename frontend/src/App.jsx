@@ -24,14 +24,14 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="kits" element={<Kits />} />
-          <Route path="/kits/:category" element={<KitsDetails />} />
-          <Route path="/kits/:category/:type" element={<GalleryPage />} />
+          <Route path="kits/:category" element={<KitsDetails />} />
+          <Route path="kits/:category/:type" element={<GalleryPage />} />
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="insights" element={<Insights />} />
           <Route path="insights/:slug" element={<ArticlePage />} />
           <Route path="community" element={<Community />} />
-          <Route path="/custom" element={<Custom />} />
-          <Route path="/custom/request" element={<CustomRequest />} />
+          <Route path="custom" element={<Custom />} />
+          <Route path="custom/request" element={<CustomRequest />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />

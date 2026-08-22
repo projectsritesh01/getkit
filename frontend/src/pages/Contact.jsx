@@ -1,6 +1,7 @@
 // Contact.jsx
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/contact.css";
 
 export default function Contact() {
@@ -11,6 +12,8 @@ export default function Contact() {
     message: ""
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,7 +23,16 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    setSubmitted(true);
+
+    // Reset form after submission
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    });
   };
 
   return (
@@ -50,6 +62,14 @@ export default function Contact() {
 
           <div className="contactCard formCard">
             <h2>Send us a message</h2>
+
+            {/* SUCCESS MESSAGE */}
+
+            {submitted && (
+              <div className="successMessage">
+                Your message has been received. We'll get back to you soon.
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="contactForm">
 
@@ -88,7 +108,10 @@ export default function Contact() {
                 required
               />
 
-              <button type="submit" className="contactBtn">
+              <button
+                type="submit"
+                className="contactBtn"
+              >
                 Submit Message
               </button>
 
@@ -101,6 +124,7 @@ export default function Contact() {
 
             <div className="contactCard infoCard">
               <div className="iconBox">✉️</div>
+
               <div>
                 <h3>Email</h3>
                 <p>support@getkit.com</p>
@@ -109,6 +133,7 @@ export default function Contact() {
 
             <div className="contactCard infoCard">
               <div className="iconBox">📞</div>
+
               <div>
                 <h3>Phone</h3>
                 <p>+91 90000 00000</p>
@@ -117,6 +142,7 @@ export default function Contact() {
 
             <div className="contactCard infoCard">
               <div className="iconBox">📍</div>
+
               <div>
                 <h3>Location</h3>
                 <p>India (Remote-first team)</p>
@@ -125,6 +151,7 @@ export default function Contact() {
 
             <div className="contactCard infoCard">
               <div className="iconBox">⏰</div>
+
               <div>
                 <h3>Working Hours</h3>
                 <p>Monday – Saturday</p>
@@ -140,6 +167,7 @@ export default function Contact() {
 
         <section className="contactCta">
           <div className="contactCard ctaCard">
+
             <h2>Looking for a custom digital kit?</h2>
 
             <p>
@@ -147,9 +175,13 @@ export default function Contact() {
               tailored to your workflow, business, or event.
             </p>
 
-            <button className="contactBtn">
+            <Link
+              to="/custom/request"
+              className="contactBtn"
+            >
               Request Custom Kit
-            </button>
+            </Link>
+
           </div>
         </section>
 

@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 // import articlesRoute from "./routes/articles.js";
-
+import customRequestRoutes from "./routes/customRequests.js";
 dotenv.config();
 
 const app = express();
@@ -33,6 +33,8 @@ app.get("/", (req, res) => {
 /* Routes */
 app.use("/api/auth", authRoutes);
 // app.use("/api/articles", articlesRoute);
+
+app.use("/api/custom-requests", customRequestRoutes);
 
 /* Port */
 const PORT = process.env.PORT || 5000;
