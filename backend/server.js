@@ -30,6 +30,12 @@ app.get("/", (req, res) => {
   res.send("Backend Running");
 });
 
+app.get("/api/test", (req, res) => {
+  res.json({
+    message: "API is working"
+  });
+});
+
 /* Routes */
 app.use("/api/auth", authRoutes);
 // app.use("/api/articles", articlesRoute);
