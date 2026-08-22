@@ -1,38 +1,68 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import api from "../services/api";
+import { Link, useNavigate } from "react-router-dom";
+import authService from "../services/authService";
 import "../styles/auth.css";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 🚨 stop page reload
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
 
     try {
-      const res = await api.post("/auth/login", {
+      await authService.login({
         email,
-        password,
+        password
       });
 
-      localStorage.setItem("token", res.data.token);
       alert("Login successful 🚀");
+
+      // Go to home page after successful login
+      navigate("/");
+
     } catch (err) {
-      console.log(err);
-      alert(err.response?.data?.message || "Login failed");
+      console.error("Login error:", err);
+
+      setError(
+        err.response?.data?.message ||
+        "Login failed. Please try again."
+      );
+
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
+
         <h2>Welcome Back</h2>
-        <p className="auth-subtitle">Login to continue</p>
+
+        <p className="auth-subtitle">
+          Login to continue
+        </p>
+
+        {error && (
+          <p className="auth-error">
+            {error}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit}>
+
           <div className="form-group">
             <label>Email</label>
+
             <input
               type="email"
               placeholder="Enter your email"
@@ -44,6 +74,7 @@ export default function Login() {
 
           <div className="form-group">
             <label>Password</label>
+
             <input
               type="password"
               placeholder="Enter your password"
@@ -53,14 +84,23 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary full-width">
-            Login
+          <button
+            type="submit"
+            className="btn btn-primary full-width"
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
+
         </form>
 
         <p className="auth-footer">
-          Don’t have an account? <Link to="/signup">Sign up</Link>
+          Don’t have an account?{" "}
+          <Link to="/signup">
+            Sign up
+          </Link>
         </p>
+
       </div>
     </div>
   );
