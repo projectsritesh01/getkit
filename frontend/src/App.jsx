@@ -10,13 +10,12 @@ import Insights from "./pages/Insights";
 import Kits from "./pages/Kits";
 import KitsDetails from "./pages/KitsDetails";
 import Community from "./pages/Community";
-import Custom from "./pages/Custom"; 
+import Custom from "./pages/Custom";
 import CustomRequest from "./pages/CustomRequest";
 import GalleryPage from "./pages/GalleryPage";
 import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/Home/ProtectedRoute";
-
-
+import Chatbot from "./components/Home/Chatbot";
 
 function App() {
   return (
@@ -37,9 +36,11 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-
         </Route>
       </Routes>
+
+      {/* GetKit AI Chatbot */}
+      <Chatbot />
     </BrowserRouter>
   );
 }

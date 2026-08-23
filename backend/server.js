@@ -4,11 +4,14 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 import authRoutes from "./routes/auth.js";
 import customRequestRoutes from "./routes/customRequests.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import chatRoutes from "./routes/chat.js";
 
-dotenv.config();
+console.log("Gemini key loaded:", !!process.env.GEMINI_API_KEY);
 
 const app = express();
 
@@ -46,6 +49,8 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 
 app.use("/api/custom-requests", customRequestRoutes);
+
+app.use("/api/chat", chatRoutes);
 
 /* 404 Handler */
 
