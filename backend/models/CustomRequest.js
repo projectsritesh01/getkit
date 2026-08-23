@@ -5,7 +5,9 @@ const customRequestSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      minlength: 2,
+      maxlength: 50
     },
 
     email: {
@@ -18,13 +20,21 @@ const customRequestSchema = new mongoose.Schema(
     type: {
       type: String,
       required: true,
-      trim: true
+      enum: ["Template", "Product"]
     },
 
     description: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      minlength: 10,
+      maxlength: 1000
+    },
+
+    status: {
+      type: String,
+      enum: ["pending", "reviewing", "completed", "rejected"],
+      default: "pending"
     }
   },
   {

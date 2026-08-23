@@ -1,13 +1,17 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/layout.css";
 
 import logoImg from "../assets/GetKit2.png";
-// import nameImg from "../assets/GetKit Name.png";
+import { useAuth } from "../context/AuthContext";
 
 export default function MainLayout() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { user, isAuthenticated, logout, loading } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +19,23 @@ export default function MainLayout() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+
+    closeMenu();
+
+    navigate("/");
+  };
 
   return (
     <>
@@ -28,10 +45,23 @@ export default function MainLayout() {
         }`}
       >
         <div className="nav-container">
-          <NavLink to="/" className="logo" onClick={closeMenu}>
-            <img src={logoImg} alt="GetKit Logo" className="logo-icon" />
-            {/* <img src={nameImg} alt="GetKit" className="logo-text" /> */}
+
+          {/* LOGO */}
+
+          <NavLink
+            to="/"
+            className="logo"
+            onClick={closeMenu}
+          >
+            <img
+              src={logoImg}
+              alt="GetKit Logo"
+              className="logo-icon"
+            />
           </NavLink>
+
+
+          {/* MOBILE MENU BUTTON */}
 
           <button
             className="menu-toggle"
@@ -41,53 +71,106 @@ export default function MainLayout() {
             {menuOpen ? "✕" : "☰"}
           </button>
 
+
+          {/* NAVIGATION */}
+
           <nav className="nav-links">
-            <NavLink to="/how-it-works" onClick={closeMenu}>
+
+            <NavLink
+              to="/how-it-works"
+              onClick={closeMenu}
+            >
               How It Works
             </NavLink>
 
-            <NavLink to="/kits" onClick={closeMenu}>
+            <NavLink
+              to="/kits"
+              onClick={closeMenu}
+            >
               Kits
             </NavLink>
 
-            <NavLink to="/insights" onClick={closeMenu}>
+            <NavLink
+              to="/insights"
+              onClick={closeMenu}
+            >
               Insights
             </NavLink>
 
-            <NavLink to="/community" onClick={closeMenu}>
+            <NavLink
+              to="/community"
+              onClick={closeMenu}
+            >
               Community
             </NavLink>
 
-            <NavLink to="/custom" onClick={closeMenu}>
+            <NavLink
+              to="/custom"
+              onClick={closeMenu}
+            >
               Custom
             </NavLink>
 
-            <NavLink to="/faq" onClick={closeMenu}>
+            <NavLink
+              to="/faq"
+              onClick={closeMenu}
+            >
               FAQ
             </NavLink>
 
-            <NavLink to="/contact" onClick={closeMenu}>
+            <NavLink
+              to="/contact"
+              onClick={closeMenu}
+            >
               Contact Us
             </NavLink>
+
           </nav>
 
-          <div className="nav-actions">
-            <NavLink
-              to="/login"
-              className="btn btn-secondary"
-              onClick={closeMenu}
-            >
-              Login
-            </NavLink>
 
-            <NavLink
-              to="/signup"
-              className="btn btn-primary"
-              onClick={closeMenu}
-            >
-              Sign up
-            </NavLink>
+          {/* AUTH ACTIONS */}
+
+          <div className="nav-actions">
+
+            {!loading && !isAuthenticated && (
+              <>
+                <NavLink
+                  to="/login"
+                  className="btn btn-secondary"
+                  onClick={closeMenu}
+                >
+                  Login
+                </NavLink>
+
+                <NavLink
+                  to="/signup"
+                  className="btn btn-primary"
+                  onClick={closeMenu}
+                >
+                  Sign up
+                </NavLink>
+              </>
+            )}
+
+
+            {!loading && isAuthenticated && (
+              <>
+                <span className="nav-user">
+                  Hi, {user?.name}
+                </span>
+
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            )}
+
           </div>
+
         </div>
       </header>
 

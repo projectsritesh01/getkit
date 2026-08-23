@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import authService from "../services/authService";
+// import authService from "../services/authService";
+import { useAuth } from "../context/AuthContext";
 import "../styles/auth.css";
 
 export default function Signup() {
   const navigate = useNavigate();
 
+  const { signup } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +24,7 @@ export default function Signup() {
     setSuccess("");
 
     try {
-      await authService.signup({
+      await signup({
         name,
         email,
         password
